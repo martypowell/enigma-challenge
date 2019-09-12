@@ -33,15 +33,20 @@ const getLogs = (filePath, callback) =>
 
 // Filter Logs by HTTP_ACTION = GET over standard port 80, should exclude requests beginning with
 const filterLogs = logs => {
-  const desiredPorts = [80];
-  const desiredHttpActions = ["Get"];
+  const { ports = "", actions = "" } = args;
+  const desiredPorts =
+    typeof ports === "string" ? ports.split(",") : ports ? [ports] : [];
+  const desiredHttpActions = actions.split(",");
+
   return logs.filter(log => {
     const logPort = parseInt(log[logDataIndexes.HttpPort]);
-    const hasValidPort = desiredPorts.includes(logPort);
-    const hasValidHttpActions = desiredHttpActions.some(
-      action =>
-        action.toLowerCase() === log[logDataIndexes.HttpAction].toLowerCase()
-    );
+    const hasValidPort = !desiredPorts || desiredPorts.includes(logPort);
+    const hasValidHttpActions =
+      !desiredHttpActions ||
+      desiredHttpActions.some(
+        action =>
+          action.toLowerCase() === log[logDataIndexes.HttpAction].toLowerCase()
+      );
     const hasValidRequestIpAddress = !log[
       logDataIndexes.RequestIpAddress
     ].startsWith("207.114");
