@@ -1,4 +1,36 @@
+const fs = require("fs");
+const args = require("yargs").argv;
+
+const exitCodes = {
+  success: 0,
+  fileReadError: 1
+};
+
+/**
+ * Read a file based on a relative file path
+ * @param {string} filePath relative file path
+ * @param {*} callback callback function that returns the log data
+ */
+const getLogs = (filePath, callback) =>
+  fs.readFile(filePath, { encoding: "utf-8" }, function(err, data) {
+    if (!err) {
+      console.log("received logs");
+      if (callback && typeof callback === "function") {
+        callback(data);
+      }
+    } else {
+      console.log(`Error Reading File: ${err}`);
+      return exitCodes.fileReadError;
+    }
+  });
+
+const filterLogs = logs => {
+  console.log("filtering logs");
+};
+
 // Read a Log File
+const logFilePath = args.filePath;
+const filteredLogs = getLogs(logFilePath, filterLogs);
 
 // Filter Logs by HTTP_ACTION = GET over standard port 80, should exclude requests beginning with "207.114"
 

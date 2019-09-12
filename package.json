@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node index.js"
+    "start": "node index.js",
+    "start-sample": "node index.js --filePath=./data/sample-access.log"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,8 @@
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "babel-jest": "^24.9.0"
+  },
+  "dependencies": {
+    "yargs": "^14.0.0"
   }
 }
