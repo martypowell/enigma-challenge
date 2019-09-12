@@ -14,9 +14,10 @@ const exitCodes = {
 const getLogs = (filePath, callback) =>
   fs.readFile(filePath, { encoding: "utf-8" }, function(err, data) {
     if (!err) {
-      console.log("received logs");
       if (callback && typeof callback === "function") {
-        callback(data);
+        const logRows = data.split("\n");
+        const logRowsWithColumns = logRows.map(log => log.split(" "));
+        callback(logRowsWithColumns);
       }
     } else {
       console.log(`Error Reading File: ${err}`);
@@ -25,7 +26,7 @@ const getLogs = (filePath, callback) =>
   });
 
 const filterLogs = logs => {
-  console.log("filtering logs");
+  console.log("filtering logs", logs);
 };
 
 // Read a Log File
