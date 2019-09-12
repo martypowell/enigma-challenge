@@ -1,6 +1,12 @@
 const fs = require("fs");
 const args = require("yargs").argv;
 
+const logDataIndexes = {
+  HttpAction: 8,
+  HttpPort: 7,
+  RequestIpAddress: 2
+};
+
 const exitCodes = {
   success: 0,
   fileReadError: 1
@@ -17,7 +23,7 @@ const getLogs = (filePath, callback) =>
       if (callback && typeof callback === "function") {
         const logRows = data.split("\n");
         const logRowsWithColumns = logRows.map(log => log.split(" "));
-        callback(logRowsWithColumns);
+        return callback(logRowsWithColumns);
       }
     } else {
       console.log(`Error Reading File: ${err}`);
@@ -25,15 +31,31 @@ const getLogs = (filePath, callback) =>
     }
   });
 
+// Filter Logs by HTTP_ACTION = GET over standard port 80, should exclude requests beginning with
 const filterLogs = logs => {
-  console.log("filtering logs", logs);
+  const desiredPorts = [80];
+  const desiredHttpActions = ["Get"];
+  return logs.filter(log => {
+    const logPort = parseInt(log[logDataIndexes.HttpPort]);
+    const hasValidPort = desiredPorts.includes(logPort);
+    const hasValidHttpActions = desiredHttpActions.some(
+      action =>
+        action.toLowerCase() === log[logDataIndexes.HttpAction].toLowerCase()
+    );
+    const hasValidRequestIpAddress = !log[
+      logDataIndexes.RequestIpAddress
+    ].startsWith("207.114");
+
+    return hasValidPort && hasValidHttpActions && hasValidRequestIpAddress;
+  });
 };
 
 // Read a Log File
 const logFilePath = args.filePath;
-const filteredLogs = getLogs(logFilePath, filterLogs);
-
-// Filter Logs by HTTP_ACTION = GET over standard port 80, should exclude requests beginning with "207.114"
+getLogs(logFilePath, logs => {
+  const filteredLogs = filterLogs(logs);
+  console.log("filtered", filteredLogs.length);
+});
 
 // Get IPS Addresses as a list
 
