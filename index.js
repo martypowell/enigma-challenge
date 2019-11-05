@@ -64,8 +64,20 @@ getLogs(logFilePath, logs => {
     log => log[logDataIndexes.RequestIpAddress]
   );
   // Group IPAddresses by Number of Requests Made per IP Address
+  const ipAddressByCount = ipAddresses.reduce(
+    (groupedIpAddresses, ipAddress) => {
+      if (!groupedIpAddresses[ipAddress]) {
+        groupedIpAddresses[ipAddress] = 0;
+      }
 
-  console.log("filtered", ipAddresses);
+      groupedIpAddresses[ipAddress] += 1;
+
+      return groupedIpAddresses;
+    },
+    {}
+  );
+
+  console.log("filtered", ipAddressByCount);
 });
 
 // Sort the Grouped IP Addresses, by Number of Requests (most first), then by IP octets of greater values listed first
