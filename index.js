@@ -59,12 +59,14 @@ const filterLogs = logs => {
 const logFilePath = args.filePath;
 getLogs(logFilePath, logs => {
   const filteredLogs = filterLogs(logs);
-  console.log("filtered", filteredLogs.length);
+  // Get IPS Addresses as a list
+  const ipAddresses = filteredLogs.map(
+    log => log[logDataIndexes.RequestIpAddress]
+  );
+  // Group IPAddresses by Number of Requests Made per IP Address
+
+  console.log("filtered", ipAddresses);
 });
-
-// Get IPS Addresses as a list
-
-// Group IPAddresses by Number of Requests Made per IP Address
 
 // Sort the Grouped IP Addresses, by Number of Requests (most first), then by IP octets of greater values listed first
 
