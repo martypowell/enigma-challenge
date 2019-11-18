@@ -1,6 +1,8 @@
 const fs = require("fs");
 const { ExitCodes, LogDataIndexes } = require("./Constants");
 
+const ipPatternToFilter = "207.114"; //TODO: This should not be embedded here.
+
 /**
  * Read a file based on a relative file path
  * @param {string} filePath relative file path
@@ -38,7 +40,7 @@ const FilterLogs = logs => {
       );
     const hasValidRequestIpAddress = !log[
       LogDataIndexes.RequestIpAddress
-    ].startsWith("207.114"); //TODO: This should not be embedded here.
+    ].startsWith(ipPatternToFilter);
 
     return hasValidPort && hasValidHttpActions && hasValidRequestIpAddress;
   });

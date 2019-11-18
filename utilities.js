@@ -11,4 +11,4 @@ const WriteResults = (fileName, groupResults = []) => {
   });
 };
 
-module.exports = { GetIpAddressAsNumber, WriteResults };
+module.exports = { WriteResults };
