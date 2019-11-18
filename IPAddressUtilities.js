@@ -4,12 +4,11 @@
  */
 const GetIpAddressAsNumber = ipAddress => {
   const ipAddressParts = ipAddress.split(".").map(part => parseInt(part));
-  return ipAddressParts.reduce(
-    (ipAddressNumberValue, ipAddressPart, index, parts) => {
-      ipAddressNumberValue += ipAddressPart * 256 * (parts.length - index);
-      return ipAddressNumberValue;
-    },
-    0
+  return (
+    ipAddressParts[0] * Math.pow(256, 3) +
+    ipAddressParts[1] * Math.pow(256, 2) +
+    ipAddressParts[2] * 256 +
+    +ipAddressParts[3]
   );
 };
 
@@ -44,6 +43,7 @@ const SortIpByNumberOfRequests = ipAddressByCount =>
 
       const aIpAddressAsNumber = GetIpAddressAsNumber(a.ipAddress);
       const bIpAddressAsNumber = GetIpAddressAsNumber(b.ipAddress);
+
       return aIpAddressAsNumber - bIpAddressAsNumber;
     });
 

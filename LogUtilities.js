@@ -23,7 +23,7 @@ const GetLogs = (filePath, callback) =>
   });
 
 // Filter Logs by HTTP_ACTION = GET over standard port 80, should exclude requests beginning with
-const FilterLogs = logs => {
+const FilterLogs = (logs, args) => {
   const { ports = "", actions = "" } = args;
   const desiredPorts =
     typeof ports === "string" ? ports.split(",") : ports ? [ports] : [];

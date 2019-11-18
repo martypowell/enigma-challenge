@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const WriteResults = (fileName, groupResults = []) => {
   const linesAsString = groupResults
     .map(({ ipAddress, count }) => [ipAddress, count].join(","))
