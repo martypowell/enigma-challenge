@@ -24,8 +24,8 @@ describe("SortIpByNumberOfRequests", () => {
     const ips = {
       "169.123.16.9": 1,
       "169.123.6.89": 1,
-      "169.123.16.12": 1,
-      "169.123.16.100": 1
+      "169.123.16.100": 1,
+      "169.123.16.12": 1
     };
 
     const actual = SortIpByNumberOfRequests(ips);
