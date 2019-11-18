@@ -10,4 +10,4 @@ const GetIpAddressAsNumber = ipAddress => {
   );
 };
 
-export { GetIpAddressAsNumber };
+module.exports = { GetIpAddressAsNumber };

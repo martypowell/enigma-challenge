@@ -1,4 +1,4 @@
-import { GetIpAddressAsNumber } from "./utilities";
+const { GetIpAddressAsNumber } = require("./utilities");
 const fs = require("fs");
 const args = require("yargs").argv;
 
