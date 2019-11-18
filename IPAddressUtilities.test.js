@@ -1,4 +1,4 @@
-import { GetIpAddressAsNumber } from "./utilities";
+import { GetIpAddressAsNumber } from "./IPAddressUtilities";
 
 test("should return the number representation of an ip address", () => {
   const actual = GetIpAddressAsNumber("1.1.1.1");
