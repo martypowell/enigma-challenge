@@ -3,9 +3,7 @@
  * @param {*} ipAddress
  */
 const GetIpAddressAsNumber = ipAddress => {
-  const [part1, part2, part3, part4] = ipAddress
-    .split(".")
-    .map(part => parseInt(part));
+  const [part1, part2, part3, part4] = ipAddress.split(".").map(parseInt);
   return (
     part1 * Math.pow(256, 3) + part2 * Math.pow(256, 2) + part3 * 256 + part4
   );
