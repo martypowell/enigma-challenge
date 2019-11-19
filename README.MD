@@ -17,7 +17,7 @@ In order to run the application for the specific use cases in version 1.0.0, you
   - Port 80
   - GET Http Action for Request
   - Exclude Request Ip Starts with "207.114"
-- `npm run sample` - Runs program based on a very small network log to increase speed for debugging and development. Uses the same criteria as `npm start`.
+- `npm run-script sample` - Runs program based on a very small network log to increase speed for debugging and development. Uses the same criteria as `npm start`.
 
 #### Customization
 
@@ -28,6 +28,7 @@ The following command line arguments are available to configure the application.
 - **--filePath** - path to the network log - **required**
 - **--ports** - command separated request ports you wish to include as a filter - **required**
 - **--actions** - command separated request http actions to include as a filter - **required**
+- **--resultPath** - path you wish to save the results file - optional (default = "./results.csv")
 
 ### Example
 
