@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node index.js",
-    "sample": "node index.js --filePath=./data/sample-access.log --ports=80 --actions=GET"
+    "sample": "node index.js --filePath=./data/sample-access.log --ports=80 --actions=GET --resultPath=./sample-results.csv"
   },
   "author": "",
   "license": "ISC",
