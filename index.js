@@ -1,4 +1,4 @@
-const { WriteResults } = require("./utilities");
+const { WriteResults } = require("./Utilities");
 const {
   GetIpByNumberOfRequests,
   SortIpByNumberOfRequests
@@ -20,8 +20,6 @@ GetLogs(logFilePath, logs => {
   );
   // Group IPAddresses by Number of Requests Made per IP Address
   const ipAddressByCount = GetIpByNumberOfRequests(ipAddresses);
-
-  console.log(ipAddressByCount);
 
   // Sort the Grouped IP Addresses, by Number of Requests (most first), then by IP octets of greater values listed first
   const sortedIpAddressesByCount = SortIpByNumberOfRequests(ipAddressByCount); // sort by number of requests with the most being first
