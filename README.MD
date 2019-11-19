@@ -39,7 +39,7 @@ node index.js --filePath=./data/sample-access.log --ports=80 --actions=GET
 
 ## Testing
 
-If you find some piece of logic isn't working, add a test to support that claim. We are using [jest](https://jestjs.io/) as our testing framework. If a test file does not exist, please use the following format: `{FileName.test.js}`. This test file should live in the same directory as the file to test. See [IPAddressUtilities.test.js]([IPAddressUtilities.test.js](https://github.com/martypowell/enigma-challenge/blob/master/IPAddressUtilities.test.js);
+If you find some piece of logic isn't working, add a test to support that claim. We are using [jest](https://jestjs.io/) as our testing framework. If a test file does not exist, please use the following format: `{FileName.test.js}`. This test file should live in the same directory as the file to test. See [IPAddressUtilities.test.js](https://github.com/martypowell/enigma-challenge/blob/master/IPAddressUtilities.test.js)
 
 To run tests, run `npm test`
 
