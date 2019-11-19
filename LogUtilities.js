@@ -22,7 +22,7 @@ const GetLogs = (filePath, callback) =>
     }
   });
 
-// Filter Logs by HTTP_ACTION = GET over standard port 80, should exclude requests beginning with
+// Filter Logs by HTTP_ACTION = GET over standard port 80, should exclude requests beginning with 207.114
 const FilterLogs = (logs, args) => {
   const { ports = "", actions = "" } = args;
   const desiredPorts =
