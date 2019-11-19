@@ -13,7 +13,7 @@ Network log parser designed to manipulate and filter network logs. The first ite
 
 In order to run the application for the specific use cases in version 1.0.0, you can run one of the following:
 
-- npm start - Runs program based on the provided network log. Will include only addresses that are:
+- `npm start` - Runs program based on the provided network log. Will include only addresses that are:
   - Port 80
   - GET Http Action for Request
   - Exclude Request Ip Starts with "207.114"
@@ -25,9 +25,9 @@ You can run this application in your favorite terminal by running `node index.js
 
 The following command line arguments are available to configure the application.
 
-- **--filePath** - path to the network log - required
-- **--ports** - command separated request ports you wish to include as a filter - required
-- **--actions** - command separated request http actions to include as a filter - required
+- **--filePath** - path to the network log - **required**
+- **--ports** - command separated request ports you wish to include as a filter - **required**
+- **--actions** - command separated request http actions to include as a filter - **required**
 
 ### Example
 
@@ -39,7 +39,7 @@ node index.js --filePath=./data/sample-access.log --ports=80 --actions=GET
 
 ## Testing
 
-If you find some piece of logic isn't working, add a test to support that claim. We are using [jest](https://jestjs.io/) as our testing framework. If a test file does not exist, please use the following format: `{FileName.test.js}`.
+If you find some piece of logic isn't working, add a test to support that claim. We are using [jest](https://jestjs.io/) as our testing framework. If a test file does not exist, please use the following format: `{FileName.test.js}`. This test file should live in the same directory as the file to test. See [IPAddressUtilities.test.js]([IPAddressUtilities.test.js](https://github.com/martypowell/enigma-challenge/blob/master/IPAddressUtilities.test.js);
 
 To run tests, run `npm test`
 
